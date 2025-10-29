@@ -1,0 +1,41 @@
+# Entornos virtuales Python
+.venv/
+venv/
+env/
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribuciones / empaquetados
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Instaladores y binarios
+*.exe
+*.pkg
+*.msi
+*.dmg
+*.dll
+*.pyd
+*.dylib
+
+# Ghostscript (instalador externo, no debería estar en Git)
+Ghostscript/
+
+# Carpetas de builds antiguos
+build Viejo/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
