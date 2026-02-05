@@ -7,7 +7,7 @@ import threading
 import fitz
 
 APP_TITLE = "Renombrador de Alistamientos"
-DEFAULT_PATH = r"g:/Material Rodante/.ISO 9001- 2 - Coordinación General Técnica/08 - Programación/05 - Archivo/2025/"
+DEFAULT_PATH = r"g:/Material Rodante/.ISO 9001- 2 - Coordinación General Técnica/08 - Programación/05 - Archivo/2026/"
 
 class PDFRenamerApp:
     def __init__(self, root):
@@ -110,10 +110,12 @@ class PDFRenamerApp:
             return
         formatted_train = self.format_train_number(train_input)
         if date_str:
-            new_name = f"{date_str} AL {formatted_train}.pdf"
+            #new_name = f"{date_str} AL {formatted_train}.pdf"
+            new_name = f"{date_str} CHECKLIST {formatted_train}.pdf"
         else:
             today = datetime.now().strftime("%d-%m")
-            new_name = f"{today} AL {formatted_train}.pdf"
+            ## new_name = f"{today} AL {formatted_train}.pdf"
+            new_name = f"{today} CHECKLIST {formatted_train}.pdf"
         try:
             directory = os.path.dirname(self.current_pdf)
             new_path = os.path.join(directory, new_name)

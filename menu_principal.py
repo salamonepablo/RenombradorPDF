@@ -45,14 +45,14 @@ def main():
     # Los botones ahora llaman directamente a la clase de la aplicación
     btn_alistamientos = ttk.Button(
         main_frame, 
-        text="Renombrador de ALISTAMIENTOS", 
+        text="Renombrador de ALs / CheckLists LOCs", 
         command=lambda: launch_app(renombrador_alistamientos.PDFRenamerApp)
     )
     btn_alistamientos.pack(fill="x", pady=5)
 
     btn_preparatoria = ttk.Button(
         main_frame, 
-        text="Renombrador de PREPARATORIA", 
+        text="Renombrador de PREPARATORIA CCEE", 
         command=lambda: launch_app(renombrador_preparatorias.PreparatoriaRenamerApp)
     )
     btn_preparatoria.pack(fill="x", pady=5)
