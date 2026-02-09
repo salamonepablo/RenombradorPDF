@@ -44,14 +44,14 @@ Seleccione la herramienta apropiada según el tipo de documento.
 
 ### Formatos de salida
 
-- **Checklist**: `05-02 CHECKLIST G-022.pdf`
-- **Alistamientos**: `05-02 AL A107.pdf`
+- **Checklist**: `05-02 CHECKLIST G-012.pdf`
+- **Alistamientos**: `05-02 AL A904.pdf`
 
 ### Reglas de formato de locomotoras
 
-- **2 dígitos** (ej: 22): Se convierte a `G-0XX` → `G-022`
-- **3 dígitos** (ej: 107): Se convierte a `AXXX` → `A107`
-- **Excepciones**: 105 y 106 no llevan prefijo → `105`, `106`
+- **2 dígitos p/Locs CNR** (ej: 13): Se convierte a `G-0XX` → `G-013`
+- **3 dígitos p/Locs GM** (ej: 922): Se convierte a `AXXX` → `A922`
+- **Excepciones p/CMN**: 105 y 106 no llevan prefijo → `105`, `106`
 
 ## Renombrador de PREPARATORIA CCEE
 
