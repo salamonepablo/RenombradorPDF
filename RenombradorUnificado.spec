@@ -1,26 +1,37 @@
-# RenombradorUnificado.spec (Añadiendo fitz)
+# RenombradorUnificado.spec - v2.0
+# Configuración para PyInstaller con la nueva estructura modular
 # -*- mode: python ; coding: utf-8 -*-
 
 a = Analysis(
-    ['menu_principal.py'],
+    ['src/main.py'],  # Punto de entrada actualizado a nueva estructura
     pathex=[],
     binaries=[],
     datas=[
-        ('renombrador_alistamientos.py', '.'),
-        ('renombrador_preparatorias.py', '.')
+        # No es necesario agregar archivos individuales, todo está en src/
     ],
     hiddenimports=[
-        'renombrador_alistamientos',
-        'renombrador_preparatorias',
+        'src.ui.menu_principal',
+        'src.ui.base_renamer',
+        'src.renamers.alistamientos',
+        'src.renamers.preparatorias',
+        'src.renamers.viajes_ld',
+        'src.utils.validators',
+        'src.utils.formatters',
+        'src.utils.pdf_handler',
+        'src.config.settings',
         'PIL',
         'PIL.Image',
         'PIL.ImageTk',
-        'fitz'  # <-- AÑADIDO PARA LA LIBRERÍA DE PDF (PyMuPDF)
+        'fitz',  # PyMuPDF para lectura de PDFs
+        'tkinter',  # Interfaz gráfica
     ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=[
+        'matplotlib',
+        'numpy',
+    ],
     noarchive=False,
 )
 pyz = PYZ(a.pure)
