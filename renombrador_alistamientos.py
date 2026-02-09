@@ -54,10 +54,16 @@ class PDFRenamerApp:
         self.train_entry.grid(column=3, row=0, sticky=tk.W, padx=(0, 15))
         self.train_entry.bind("<FocusOut>", self._format_train_entry)
         self.train_entry.bind("<Return>", self._rename_on_enter)
+        
+        # Checkboxes para formato de nombre
+        self.format_var = tk.StringVar(value="checklist")
+        tk.ttk.Radiobutton(control_frame, text="Checklist", variable=self.format_var, value="checklist").grid(column=4, row=0, padx=5)
+        tk.ttk.Radiobutton(control_frame, text="Alistamientos", variable=self.format_var, value="alistamientos").grid(column=5, row=0, padx=5)
+        
         self.rename_button = tk.ttk.Button(control_frame, text="Renombrar", command=self.rename_file)
-        self.rename_button.grid(column=4, row=0, padx=5)
-        tk.ttk.Button(control_frame, text="Limpiar", command=self.clear_fields).grid(column=5, row=0, padx=5)
-        tk.ttk.Button(control_frame, text="Volver al Menú", command=self.root.destroy).grid(column=6, row=0, padx=5)
+        self.rename_button.grid(column=6, row=0, padx=5)
+        tk.ttk.Button(control_frame, text="Limpiar", command=self.clear_fields).grid(column=7, row=0, padx=5)
+        tk.ttk.Button(control_frame, text="Volver al Menú", command=self.root.destroy).grid(column=8, row=0, padx=5)
         self.status_var = tk.StringVar()
         self.status_var.set("Listo. Selecciona una carpeta y un PDF.")
         status_bar = tk.ttk.Label(mainframe, textvariable=self.status_var, relief=tk.SUNKEN)
@@ -109,13 +115,18 @@ class PDFRenamerApp:
             tk.messagebox.showerror("Error", "Formato de fecha incorrecto. Debe ser DD-MM y una fecha válida.")
             return
         formatted_train = self.format_train_number(train_input)
+        
+        # Determinar el formato según la opción seleccionada
+        if self.format_var.get() == "alistamientos":
+            format_type = "AL"
+        else:
+            format_type = "CHECKLIST"
+        
         if date_str:
-            #new_name = f"{date_str} AL {formatted_train}.pdf"
-            new_name = f"{date_str} CHECKLIST {formatted_train}.pdf"
+            new_name = f"{date_str} {format_type} {formatted_train}.pdf"
         else:
             today = datetime.now().strftime("%d-%m")
-            ## new_name = f"{today} AL {formatted_train}.pdf"
-            new_name = f"{today} CHECKLIST {formatted_train}.pdf"
+            new_name = f"{today} {format_type} {formatted_train}.pdf"
         try:
             directory = os.path.dirname(self.current_pdf)
             new_path = os.path.join(directory, new_name)
@@ -156,6 +167,9 @@ class PDFRenamerApp:
             if len(clean_str) == 2:
                 return f"G-0{clean_str}"
             elif len(clean_str) == 3:
+                # No agregar "A" para los números 105 y 106
+                if clean_str in ("105", "106"):
+                    return clean_str
                 return f"A{clean_str}"
         return train_str
 
