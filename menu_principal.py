@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import renombrador_alistamientos
 import renombrador_preparatorias
+import renombrador_viajes_ld
 
 def main():
     root = tk.Tk()
@@ -25,7 +26,7 @@ def main():
 
     # Centrar la ventana
     window_width = 400
-    window_height = 200
+    window_height = 220
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     center_x = int(screen_width/2 - window_width / 2)
@@ -56,6 +57,13 @@ def main():
         command=lambda: launch_app(renombrador_preparatorias.PreparatoriaRenamerApp)
     )
     btn_preparatoria.pack(fill="x", pady=5)
+
+    btn_viajes_ld = ttk.Button(
+        main_frame, 
+        text="Renombrador de Viajes LD", 
+        command=lambda: launch_app(renombrador_viajes_ld.ViajeLDRenamerApp)
+    )
+    btn_viajes_ld.pack(fill="x", pady=5)
 
     root.mainloop()
 
